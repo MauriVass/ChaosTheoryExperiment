@@ -1,4 +1,4 @@
-Unity*
-obj
-Logs
-.vs
+!Unity*
+!obj
+!Logs
+!.vs

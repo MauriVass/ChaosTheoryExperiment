@@ -31,7 +31,7 @@ public class Figure
 
         for (int i = 0; i < nSides; i++)
         {
-            //'angle / 2 / 180.0f' is the angle to fix the orientation
+            //'angle / 2 / 180.0f' is the angle fixing the orientation
             float v = (2.0f * i / nSides  - angle / 2 / 180.0f)* Mathf.PI;
             vertices[i] = new Vector2((Mathf.Cos(v)), (Mathf.Sin(v))) * sideLength;
 
@@ -50,7 +50,7 @@ public class Figure
 
     public void Clear()
     {
-        //Since the number of verteces is low, just destroy and recreate them
+        //Since the number of vertices is low, just destroy and recreate them
         foreach (Transform i in container.transform)
         {
             GameObject.Destroy(i.gameObject);

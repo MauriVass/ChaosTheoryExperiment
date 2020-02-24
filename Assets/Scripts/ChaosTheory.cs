@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ChaosTheory : MonoBehaviour
 {
     //Changing this values make possible have different configurations
+    //Changed from UI
     int n;
     float side;
     Figure figure;
@@ -20,7 +21,7 @@ public class ChaosTheory : MonoBehaviour
 
     float time, timer, proportion;
 
-    public GameObject VertexUI, LengthUI,SpeedUI, ProportionUI,CounterUI;
+    public GameObject VertexUI,LengthUI,SpeedUI,ProportionUI,CounterUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,12 +42,12 @@ public class ChaosTheory : MonoBehaviour
                 points[i].transform.position = new Vector2(-999,-999);
             }
         }
-        //Delete all the verteces points
+        //Delete all the vertices points
         if (!(figure is null))
             figure.Clear();
 
         //Obtain data for the new configuration
-        ChangeVerteces(true);
+        ChangeVertices(true);
         ChangeLength(true);
         ChangeSpeed();
         ChangeProportion(true);
@@ -56,7 +57,7 @@ public class ChaosTheory : MonoBehaviour
         figure = new Figure(n, side, prefabPoint);
         vertices = figure.GetVertices();
 
-        //Start position is random
+        //Start position is random choosen
         currentPositionPoint = new Vector2(Random.Range(-side, side), Random.Range(-side, side)) * 1.5f;
         //Instantiate/set position of the point at position:currentPositionPoint
         DrawPoint(currentPositionPoint);
@@ -79,7 +80,7 @@ public class ChaosTheory : MonoBehaviour
 
     Vector2 getVertice()
     {
-        //Return a random verteces
+        //Return a random vertices
         int index = Random.Range(0,n);
         return vertices[index];
     }
@@ -93,7 +94,7 @@ public class ChaosTheory : MonoBehaviour
         }
         else
         {
-            //The pool is empty. Create a new object and a dd it to the pool
+            //The pool is empty. Create a new object and add it to the pool
             tmp = Instantiate(prefabPoint, posVertex, Quaternion.identity);
             tmp.name = "Point " + counter;
             tmp.transform.localScale = Vector3.one / 2;
@@ -107,13 +108,13 @@ public class ChaosTheory : MonoBehaviour
     }
 
     //In the editor value will be false, it means that the changes are applied only after the button Restart is clicked
-    public void ChangeVerteces(bool value = false)
+    public void ChangeVertices(bool value = false)
     {
         Text text = VertexUI.GetComponent<Text>();
         Slider slider = VertexUI.transform.GetChild(0).GetComponent<Slider>();
         if (value)
             n = (int)slider.value;
-        text.text = "# Verteces: " + slider.value;
+        text.text = "# Vertices: " + slider.value;
     }
     public void ChangeLength(bool value = false)
     {
